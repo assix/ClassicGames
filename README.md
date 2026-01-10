@@ -1,6 +1,6 @@
 # Python Card Game Collection 🃏
 
-A collection of classic card games implemented in Python using **Pygame** (Recommended for python 3.12). 
+A collection of classic card games implemented in Python using **Pygame** (Tested across multiple platforms using python 3.12). 
 These projects focus on procedural graphics (no external assets required) and smooth, non-blocking game loops.
 
 ## 📂 The Games
