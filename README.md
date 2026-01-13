@@ -1,6 +1,6 @@
-# Python Card Game Collection 🃏
+# Python Classic Game Collection 🃏
 
-A collection of classic card games implemented in Python using **Pygame** (Tested across multiple platforms using python 3.12). 
+A collection of classic games implemented in Python using **Pygame** (Tested across multiple platforms using python 3.12). 
 These projects focus on procedural graphics (no external assets required) and smooth, non-blocking game loops.
 
 ## 📂 The Games
@@ -20,8 +20,8 @@ These projects focus on procedural graphics (no external assets required) and sm
 
 1. **Clone the repository:**
    \`\`\`bash
-   git clone https://github.com/assix/CardGames.git
-   cd CardGames
+   git clone https://github.com/assix/ClassicGames.git
+   cd ClassicGames
    \`\`\`
 
 2. **Install Dependencies:**
