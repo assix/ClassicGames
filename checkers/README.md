@@ -1,6 +1,6 @@
 # Checkers (Python/Pygame)
 
-Classic strategy board game featuring Minimax AI and move validation.
+Classic checkers strategy board game featuring Minimax AI and move validation.
 
 This game features custom procedural graphics and requires no external assets.
 
