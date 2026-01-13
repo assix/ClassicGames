@@ -34,21 +34,27 @@ PIXEL_FONT_5x7 = {
     'C': [0x70, 0x88, 0x80, 0x80, 0x80, 0x88, 0x70],
     'D': [0xF0, 0x88, 0x88, 0x88, 0x88, 0x88, 0xF0],
     'E': [0xF8, 0x80, 0x80, 0xF0, 0x80, 0x80, 0xF8],
+    'F': [0xF8, 0x80, 0x80, 0xF0, 0x80, 0x80, 0x80],
     'G': [0x78, 0x80, 0x80, 0x98, 0x88, 0x88, 0x70],
     'H': [0x88, 0x88, 0x88, 0xF8, 0x88, 0x88, 0x88],
     'I': [0x70, 0x20, 0x20, 0x20, 0x20, 0x20, 0x70],
+    'J': [0x08, 0x08, 0x08, 0x08, 0x08, 0x88, 0x70],
     'K': [0x88, 0x90, 0xA0, 0xC0, 0xA0, 0x90, 0x88],
     'L': [0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0xF8],
     'M': [0x88, 0xD8, 0xA8, 0xA8, 0x88, 0x88, 0x88],
     'N': [0x88, 0xC8, 0xA8, 0x98, 0x88, 0x88, 0x88],
     'O': [0x70, 0x88, 0x88, 0x88, 0x88, 0x88, 0x70],
     'P': [0xF0, 0x88, 0x88, 0xF0, 0x80, 0x80, 0x80],
+    'Q': [0x70, 0x88, 0x88, 0x88, 0xA8, 0x90, 0x68],
     'R': [0xF0, 0x88, 0x88, 0xF0, 0xA0, 0x90, 0x88],
     'S': [0x70, 0x88, 0x80, 0x70, 0x08, 0x88, 0x70],
     'T': [0xF8, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20],
     'U': [0x88, 0x88, 0x88, 0x88, 0x88, 0x88, 0x70],
+    'V': [0x88, 0x88, 0x88, 0x88, 0x88, 0x50, 0x20], # Fixed V
     'W': [0x88, 0x88, 0x88, 0xA8, 0xA8, 0xD8, 0x88],
+    'X': [0x88, 0x88, 0x50, 0x20, 0x50, 0x88, 0x88],
     'Y': [0x88, 0x88, 0x50, 0x20, 0x20, 0x20, 0x20],
+    'Z': [0xF8, 0x08, 0x10, 0x20, 0x40, 0x80, 0xF8],
     ' ': [0x00] * 7,
     '0': [0x70, 0x88, 0x98, 0xA8, 0xC8, 0x88, 0x70],
     '1': [0x20, 0x60, 0x20, 0x20, 0x20, 0x20, 0x70],
@@ -57,7 +63,9 @@ PIXEL_FONT_5x7 = {
     '4': [0x10, 0x30, 0x50, 0x90, 0xF8, 0x10, 0x10],
     '5': [0xF8, 0x80, 0xF0, 0x08, 0x08, 0x88, 0x70],
     '6': [0x30, 0x40, 0x80, 0xF0, 0x88, 0x88, 0x70],
-    'DICE_DOT': [0] # Special
+    '7': [0xF8, 0x08, 0x10, 0x20, 0x40, 0x40, 0x40],
+    '8': [0x70, 0x88, 0x88, 0x70, 0x88, 0x88, 0x70],
+    '9': [0x70, 0x88, 0x88, 0x78, 0x08, 0x88, 0x70],
 }
 
 def draw_pixel_char(surface, char, x, y, scale=2, color=BLACK):
@@ -132,9 +140,6 @@ class Board:
         if self.bar[color] > 0: return False
         
         # Check if all pieces are in home quadrant
-        # White Home: 19-23 (Indices 18-23)
-        # Red Home: 0-5
-        
         start, end = (0, 17) if color == WHITE else (6, 23)
         for i in range(start, end + 1):
             c, count = self.points[i]
@@ -144,22 +149,15 @@ class Board:
 
     def get_valid_moves(self, dice, color):
         moves = [] # (start_idx, end_idx, die_used)
-        
         unique_dice = set(dice)
         
         # 1. Must move from Bar if possible
         if self.bar[color] > 0:
             for die in unique_dice:
-                # White enters at 0->23 (high numbers), Red at 23->0 (low numbers)? 
-                # Actually standard is: White moves 0->23. Red moves 23->0.
-                # If White on bar, enters at -1 + die = index
-                # If Red on bar, enters at 24 - die = index
-                
                 target = -1
                 if color == WHITE: target = -1 + die
-                else: target = 24 - die # 1 enters at 23, 6 enters at 18
+                else: target = 24 - die 
                 
-                # Boundary check is implicitly handled by bar logic usually, but let's be safe
                 if 0 <= target <= 23:
                     c, count = self.points[target]
                     if count <= 1 or c == color:
@@ -179,7 +177,6 @@ class Board:
                 # Check Bearing Off
                 if (color == WHITE and target > 23) or (color == RED and target < 0):
                     if bear_off_allowed:
-                        # Logic: Exact roll or higher roll if no pieces behind
                         if (color == WHITE and target == 24) or (color == RED and target == -1):
                             moves.append((i, 'OFF', die))
                         else:
@@ -236,12 +233,6 @@ class AI:
                 if c == self.color and count == 1:
                     score += 20
             
-            # 4. Penalty: Leave a blot
-            if end != 'OFF' and end != 'BAR':
-                # Check if we are leaving a singleton at start
-                # (Complex to calculate simply, skipping for basic AI)
-                pass
-
             if score > best_score:
                 best_score = score
                 best_move = move
@@ -251,36 +242,23 @@ class AI:
 # --- GRAPHICS ---
 def draw_board(win, board, selected_idx, valid_targets):
     win.fill(BROWN_DARK)
-    
-    # Draw Play Area Background
     pygame.draw.rect(win, BROWN_LIGHT, (0, HEIGHT_PAD, BOARD_WIDTH, PLAY_AREA_H))
     
-    # Draw Bar (Center Line)
+    # Draw Bar
     bar_x = BOARD_WIDTH // 2
     pygame.draw.rect(win, BAR_COLOR, (bar_x - 15, HEIGHT_PAD, 30, PLAY_AREA_H))
     
-    # Draw Triangles (Points)
+    # Draw Triangles
     tri_w = (BOARD_WIDTH - 30) // 12
     tri_h = PLAY_AREA_H // 2 - 20
     
     for i in range(24):
-        # Calculate X, Y based on quadrant
-        # 12-23 are top row (left to right: 12..17 |BAR| 18..23)
-        # 11-0 are bottom row (left to right: 11..6 |BAR| 5..0)
-        
         is_top = 12 <= i <= 23
-        
-        # Index Logic for Visual Position
         if is_top:
-            if i < 18: idx_vis = i - 12
-            else: idx_vis = i - 12 # Wait, 13 is far left. 24 is far right.
-            # Visual order top: 12,13,14,15,16,17 | 18,19,20,21,22,23
             pos_idx = i - 12
         else:
-            # Visual order bottom: 11,10,9,8,7,6 | 5,4,3,2,1,0
             pos_idx = 11 - i 
         
-        # Adjust for Bar gap
         gap = 0
         if pos_idx >= 6: gap = 30
         
@@ -288,9 +266,7 @@ def draw_board(win, board, selected_idx, valid_targets):
         y_base = HEIGHT_PAD if is_top else HEIGHT - HEIGHT_PAD
         point_dir = 1 if is_top else -1
         
-        # Draw Triangle
-        color = CREAM if i % 2 == 0 else BROWN_DARK # Alternating colors
-        
+        color = CREAM if i % 2 == 0 else BROWN_DARK
         pts = [
             (x_base, y_base),
             (x_base + tri_w, y_base),
@@ -313,14 +289,12 @@ def draw_board(win, board, selected_idx, valid_targets):
             cx = x_base + tri_w // 2
             cy_start = y_base + (25 * point_dir)
             
-            # Stack Logic
-            limit = 5 # max drawn before stacking text
+            limit = 5
             drawn = min(count, limit)
-            
             for k in range(drawn):
                 cy = cy_start + (k * 40 * point_dir)
                 pygame.draw.circle(win, chk_color, (cx, cy), 18)
-                pygame.draw.circle(win, BLACK, (cx, cy), 18, 1) # Outline
+                pygame.draw.circle(win, BLACK, (cx, cy), 18, 1)
                 
             if count > limit:
                 draw_pixel_string(win, str(count), cx - 6, cy_start + ((limit-1)*40*point_dir) - 5, 2, BLACK)
@@ -333,7 +307,7 @@ def draw_board(win, board, selected_idx, valid_targets):
         for k in range(board.bar[RED]):
             pygame.draw.circle(win, RED_CHK, (bar_x, HEIGHT//2 + 40 + k*10), 18)
             
-    # Draw Off Pieces (Side Panel)
+    # Draw Off Pieces
     draw_pixel_string(win, "OFF", WIDTH - 100, 50, 2, WHITE_CHK)
     draw_pixel_string(win, f"W:{board.off[WHITE]}", WIDTH - 120, 100, 2, WHITE_CHK)
     draw_pixel_string(win, f"R:{board.off[RED]}", WIDTH - 120, HEIGHT - 100, 2, RED_CHK)
@@ -354,9 +328,9 @@ def main():
     clock = pygame.time.Clock()
     
     board = Board()
-    ai = AI(WHITE) # AI is White
+    ai = AI(WHITE) 
     
-    turn = RED # Human is RED
+    turn = RED 
     dice = []
     selected_idx = None
     valid_targets = []
@@ -366,7 +340,6 @@ def main():
     while run:
         clock.tick(30)
         
-        # AI TURN
         if turn == WHITE and dice:
             pygame.time.wait(500)
             move = ai.get_move(board, dice)
@@ -378,34 +351,28 @@ def main():
                     turn = RED
                     message = "YOUR TURN"
             else:
-                # No moves possible
                 turn = RED
                 dice = []
-                message = "AI STUCK. YOUR TURN"
+                message = "AI STUCK YOUR TURN"
         
-        # EVENT LOOP
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and not dice:
-                    # Roll Dice
                     d1, d2 = random.randint(1,6), random.randint(1,6)
                     dice = [d1, d2]
-                    if d1 == d2: dice = [d1, d1, d1, d1] # Doubles
+                    if d1 == d2: dice = [d1, d1, d1, d1]
                     message = "MOVE PIECES"
                     
-                    # Check if any moves exist, else switch turn
                     if not board.get_valid_moves(dice, turn):
-                        message = "NO MOVES!"
+                        message = "NO MOVES"
                         dice = []
                         turn = -turn
 
             if event.type == pygame.MOUSEBUTTONDOWN and turn == RED:
                 x, y = event.pos
-                
-                # Identify Clicked Point
                 clicked_idx = None
                 
                 # Check Bar
@@ -416,7 +383,6 @@ def main():
                 tri_w = (BOARD_WIDTH - 30) // 12
                 if clicked_idx is None:
                     for i in range(24):
-                        # Same math as draw logic to find hitbox
                         is_top = 12 <= i <= 23
                         pos_idx = i - 12 if is_top else 11 - i
                         gap = 30 if pos_idx >= 6 else 0
@@ -427,12 +393,10 @@ def main():
                             if is_top and y <= HEIGHT//2: clicked_idx = i
                             elif not is_top and y > HEIGHT//2: clicked_idx = i
 
-                # Handle Selection/Move
                 if clicked_idx is not None:
-                    # If clicking a valid target
                     valid_move = False
                     for t_idx, die in valid_targets:
-                        if clicked_idx == t_idx or (t_idx == 'OFF' and x > BOARD_WIDTH): # Off click loose check
+                        if clicked_idx == t_idx or (t_idx == 'OFF' and x > BOARD_WIDTH):
                             board.move_piece(selected_idx, clicked_idx, RED)
                             dice.remove(die)
                             selected_idx = None
@@ -444,7 +408,6 @@ def main():
                             break
                     
                     if not valid_move:
-                        # Select Piece
                         c = RED
                         count = 0
                         if clicked_idx == 'BAR': count = board.bar[RED]
@@ -453,13 +416,11 @@ def main():
                         if c == RED and count > 0:
                             selected_idx = clicked_idx
                             moves = board.get_valid_moves(dice, RED)
-                            # Filter for this piece
                             valid_targets = []
                             for m_start, m_end, m_die in moves:
                                 if m_start == selected_idx:
                                     valid_targets.append((m_end, m_die))
                 
-                # Click Side Panel for Bear Off
                 if x > BOARD_WIDTH and selected_idx is not None:
                     for t_idx, die in valid_targets:
                         if t_idx == 'OFF':
@@ -469,14 +430,9 @@ def main():
                              valid_targets = []
                              if not dice: turn = WHITE
 
-        # DRAW
-        # Extract just indices for drawing targets
         draw_targets = [t[0] for t in valid_targets if t[0] != 'OFF']
-        
         draw_board(win, board, selected_idx, draw_targets)
         draw_dice(win, dice, turn)
-        
-        # Draw Message
         draw_pixel_string(win, message, WIDTH//2 - len(message)*6, HEIGHT//2 - 5, 2, WHITE_CHK)
         
         pygame.display.flip()
