@@ -14,8 +14,6 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Brick Breaker](./BrickBreaker)** | Classic arcade game with dynamic physics, 5 lives, and randomized layouts. | \`python3 BrickBreaker/main.py\` |
 | **[Checkers](./checkers)** | Classic checkers strategy board game featuring Minimax AI and move validation. | `python3 checkers/checkers.py` |
 | **[Backgammon](./backgammon)** | Classic Backgammon strategy board game race. Features Heuristic AI and bearing off logic. | `python3 backgammon/backgammon.py` |
-| **[Backgammon](./backgammon)** | Classic Backgammon strategy board game race. Features Heuristic AI and bearing off logic. | `python3 backgammon/backgammon.py` |
-| **[Backgammon](./backgammon)** | Classic Backgammon strategy board game race. Features Heuristic AI and bearing off logic. | `python3 backgammon/backgammon.py` |
 
 *(More games coming soon...)*
 
