@@ -24,7 +24,7 @@ On macOS / Windows
 ```bash pip install pygame ```
 🚀 Installation & Usage
 
-    Clone the repository: ```bash git clone https://github.com/assix/CardGames.git cd CardGames/blackjack ```
+    Clone the repository: ```bash git clone https://github.com/assix/ClassicGames.git cd ClassicGames/blackjack ```
 
     Run the game: ```bash python3 blackjack.py ```
 
