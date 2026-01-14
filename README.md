@@ -19,6 +19,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Chess](./chess)** | Pro Chess with Vector Graphics, Minimax AI, and Undo feature. | `python3 chess/chess.py` |
 | **[Tic Tac Toe](./tictactoe)** | Classic Tic-Tac-Toe with unbeatable Minimax AI. | `python3 tictactoe/tictactoe.py` |
 | **[Connect Four](./connectfour)** | Classic Connect four strategy game. Connect 4 tokens to win against a smart Minimax AI. | `python3 connectfour/connectfour.py` |
+| **[Sudoku](./sudoku)** | Infinite Sudoku generator. Features error highlighting and smart cell selection. | `python3 sudoku/sudoku.py` |
 
 *(More games coming soon...)*
 
