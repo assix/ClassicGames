@@ -16,6 +16,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Backgammon](./backgammon)** | Classic Backgammon strategy board game race. Features Heuristic AI and bearing off logic. | `python3 backgammon/backgammon.py` |
 | **[Risk](./risk)** | Classic Risk strategy board game. Features Heuristic AI and bearing off logic. | `python3 risk/risk.py` |
 | **[Go](./go)** | Classic strategy board game Go (9x9). Features Liberties, Ko rule, Territory scoring, and AI. | `python3 go/go.py` |
+| **[Chess](./chess)** | Pro Chess with Vector Graphics, Minimax AI, and Undo feature. | `python3 chess/chess.py` |
 
 *(More games coming soon...)*
 
