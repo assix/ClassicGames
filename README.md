@@ -25,16 +25,16 @@ These projects focus on procedural graphics (no external assets required) and sm
 ## 🛠️ Setup
 
 1. **Clone the repository:**
-   \`\`\`bash
+   `bash
    git clone https://github.com/assix/ClassicGames.git
    cd ClassicGames
-   \`\`\`
+   `
 
 2. **Install Dependencies:**
    You only need Pygame for all games in this collection.
-   \`\`\`bash
+   `bash
    pip3 install -r requirements.txt
-   \`\`\`
+   `
 
 ## 📜 License
 MIT License - see [LICENSE](LICENSE) for details.
