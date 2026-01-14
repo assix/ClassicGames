@@ -15,6 +15,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Checkers](./checkers)** | Classic checkers strategy board game featuring Minimax AI and move validation. | `python3 checkers/checkers.py` |
 | **[Backgammon](./backgammon)** | Classic Backgammon strategy board game race. Features Heuristic AI and bearing off logic. | `python3 backgammon/backgammon.py` |
 | **[Risk](./risk)** | Classic Risk strategy board game. Features Heuristic AI and bearing off logic. | `python3 risk/risk.py` |
+| **[Go](./go)** | Classic strategy board game Go (9x9). Features Liberties, Ko rule, Territory scoring, and AI. | `python3 go/go.py` |
 
 *(More games coming soon...)*
 
