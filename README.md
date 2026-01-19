@@ -39,3 +39,4 @@ These projects focus on procedural graphics (no external assets required) and sm
 
 ## 📜 License
 MIT License - see [LICENSE](LICENSE) for details.
+| **Othello** | `othello.py` | Classic Othello, also known as Reversi strategy board game. Features Undo, Hint system, and positional AI. |
