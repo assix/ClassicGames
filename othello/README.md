@@ -4,9 +4,6 @@ A high-fidelity Python implementation of the classic strategy board game **Othel
 
 This version features a **smart Minimax AI** that understands positional strategy (like the value of corners), a hint system for learning, and "vector-style" procedural graphics that require no external assets.
 
-![Othello Game Preview](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Othello_%28Reversi%29_board.jpg/600px-Othello_%28Reversi%29_board.jpg)
-*(Note: Actual game uses custom procedural graphics)*
-
 ## ✨ Features
 * **🧠 Minimax AI:** Uses Alpha-Beta pruning and a positional weight matrix (prioritizing corners and stable edges) to play competitively.
 * **💡 Hint System:** Press `H` to see the optimal move calculated by the AI (highlighted in Gold).
