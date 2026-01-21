@@ -21,6 +21,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Connect Four](./connectfour)** | Classic Connect four strategy game. Connect 4 tokens to win against a smart Minimax AI. | `python3 connectfour/connectfour.py` |
 | **[Sudoku](./sudoku)** | Infinite Sudoku generator. Features error highlighting and smart cell selection. | `python3 sudoku/sudoku.py` |
 | **[Othello](./othello)**  | Classic Othello (Reversi) strategy game. Features Undo, Hint system, and positional AI. | `python3 othello/othello.py` |
+| **[1D Chess](./1dchess)** | A unique 1D chess variant played on a single strip. Features King, Rook, and Knight mechanics. AI uses a Greedy Heuristic algorithm (King > Capture > Advance). | `python3 1dchess/1dchess.py` |
 
 
 *(More games coming soon...)*
