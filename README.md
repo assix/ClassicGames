@@ -25,6 +25,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Stratego](./stratego)** | Classic strategy game Stratego. Features a Greedy Heuristic AI that evaluates moves based on Rank Differential and Scout Probing logic. | `python3 stratego/stratego.py` |
 | **[Minesweeper](./minesweeper)** | Classic logic puzzle. Features recursive flood-fill, first-click safety, and 'Chording' (double-click to clear neighbors). | `python3 minesweeper/minesweeper.py` |
 | **[Snake](./snake)** | Neon-styled Snake game. Features smooth input buffering, dash mechanic (Shift), and local high score tracking. | `python3 snake/snake.py` |
+| **[Asteroids](./asteroids)** | Vector physics shooter. Features procedural asteroid shapes, inertia mechanics, and splitting rocks. | `python3 asteroids/asteroids.py` |
 
 
 *(More games coming soon...)*
