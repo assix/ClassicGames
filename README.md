@@ -22,7 +22,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Sudoku](./sudoku)** | Infinite Sudoku generator. Features error highlighting and smart cell selection. | `python3 sudoku/sudoku.py` |
 | **[Othello](./othello)**  | Classic Othello (Reversi) strategy game. Features Undo, Hint system, and positional AI. | `python3 othello/othello.py` |
 | **[1D Chess](./1dchess)** | A unique 1D chess variant played on a single strip. Features King, Rook, and Knight mechanics. AI uses a Greedy Heuristic algorithm (King > Capture > Advance). | `python3 1dchess/1dchess.py` |
-| **[Stratego](./stratego)** | High-fidelity Stratego clone. Features a 'Turtle Defense' setup algorithm (Back-row Flag + Bomb perimeter) and a Greedy Heuristic AI that evaluates moves based on Rank Differential and Scout Probing logic. | `python3 stratego/stratego.py` |
+| **[Stratego](./stratego)** | Classic strategy game Stratego. Features a Greedy Heuristic AI that evaluates moves based on Rank Differential and Scout Probing logic. | `python3 stratego/stratego.py` |
 
 
 *(More games coming soon...)*
