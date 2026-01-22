@@ -24,6 +24,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[1D Chess](./1dchess)** | A unique 1D chess variant played on a single strip. Features King, Rook, and Knight mechanics. AI uses a Greedy Heuristic algorithm (King > Capture > Advance). | `python3 1dchess/1dchess.py` |
 | **[Stratego](./stratego)** | Classic strategy game Stratego. Features a Greedy Heuristic AI that evaluates moves based on Rank Differential and Scout Probing logic. | `python3 stratego/stratego.py` |
 | **[Minesweeper](./minesweeper)** | Classic logic puzzle. Features recursive flood-fill, first-click safety, and 'Chording' (double-click to clear neighbors). | `python3 minesweeper/minesweeper.py` |
+| **[Snake](./snake)** | Neon-styled Snake game. Features smooth input buffering, dash mechanic (Shift), and local high score tracking. | `python3 snake/snake.py` |
 
 
 *(More games coming soon...)*
