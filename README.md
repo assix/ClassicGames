@@ -27,6 +27,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Snake](./snake)** | Neon-styled Snake game. Features smooth input buffering, dash mechanic (Shift), and local high score tracking. | `python3 snake/snake.py` |
 | **[Asteroids](./asteroids)** | Vector physics shooter. Features procedural asteroid shapes, inertia mechanics, and splitting rocks. | `python3 asteroids/asteroids.py` |
 | **[Lemmings](./lemmings)** | Puzzle platformer with destructible terrain, job assignment system, and procedural maps. | `python3 lemmings/lemmings.py` |
+| **[Tetris](./tetris)** | Classic Tetris game. Features 3D procedural blocks, ghost piece, and SRS-style mechanics. | `python3 tetris/tetris.py` |
 
 
 *(More games coming soon...)*
