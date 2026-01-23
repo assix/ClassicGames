@@ -28,6 +28,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Asteroids](./asteroids)** | Vector physics shooter. Features procedural asteroid shapes, inertia mechanics, and splitting rocks. | `python3 asteroids/asteroids.py` |
 | **[Lemmings](./lemmings)** | Puzzle platformer with destructible terrain, job assignment system, and procedural maps. | `python3 lemmings/lemmings.py` |
 | **[Tetris](./tetris)** | Classic Tetris game. Features 3D procedural blocks, ghost piece, and SRS-style mechanics. | `python3 tetris/tetris.py` |
+| **[Space Invaders](./spaceinvaders)** | Retro shooter. Features procedural pixel-art aliens, particle explosions, and increasing difficulty. | `python3 spaceinvaders/spaceinvaders.py` |
 
 
 *(More games coming soon...)*
