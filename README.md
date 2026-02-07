@@ -29,6 +29,7 @@ These projects focus on procedural graphics (no external assets required) and sm
 | **[Lemmings](./lemmings)** | Puzzle platformer with destructible terrain, job assignment system, and procedural maps. | `python3 lemmings/lemmings.py` |
 | **[Tetris](./tetris)** | Classic Tetris game. Features 3D procedural blocks, ghost piece, and SRS-style mechanics. | `python3 tetris/tetris.py` |
 | **[Space Invaders](./spaceinvaders)** | Retro shooter. Features procedural pixel-art aliens, particle explosions, and increasing difficulty. | `python3 spaceinvaders/spaceinvaders.py` |
+| **[Queens](./queens)** | Logic puzzle. Place 1 Queen per row, column, and color region. Queens cannot touch (even diagonally). | `python3 queens/queens.py` |
 
 
 *(More games coming soon...)*
